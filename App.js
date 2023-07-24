@@ -1,21 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View, StatusBar, SafeAreaView } from 'react-native';
+import { styles } from './styles';
+import { useState } from 'react';
 
 export default function App() {
+
+  const [borderColor, setBorderColor] = useState('#C5C9E7')
+
+  const onHandlerFocus = () => {
+    setBorderColor('#424D9E')
+  }
   return (
-    <View style={styles.container}>
-      <Text>CoderHouse</Text>
-      <Text>Mi app de React Native!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.safeArea}>
+      <View style={styles.container}>
+        <View style={styles.inputContanier}>
+          <TextInput 
+            style={styles.input} 
+            placeholder="Add new Task"
+            autoCorrect={false}
+            autoCapitalize='none'
+            cursorColor='#424D9E'
+            selectionColor='#D4D7ED'
+            placeholderTextColor='#C5C9E7'
+            onFocus={onHandlerFocus}
+          />
+          <Button title="Create" color='#424D9E'/>
+        </View>
+      </View>
+    </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
